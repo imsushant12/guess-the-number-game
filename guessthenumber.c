@@ -4,29 +4,35 @@
 
 void main()
 {
-    int number,guess,nguess=0;                                               //number will contain random number chosen by computer.
-                                                                             //guess will contain the number guessed by the user.
-                                                                             //nguess will count the number of times user has taken to guess the correct number.
-    srand(time(0));                                                          //srand function will choose random number every time.
-    number=rand()%100;                                                       //to make the random number under 100, divided it by 100.
+    system("Color 3F");
+    int number,guess,numberofguess=0;                                          //number will contain random number chosen by computer.
+                                                                               //guess will contain the number guessed by the user.
+                                                                               //numberofguess will count the number of times user has taken to guess the correct number.
 
-    do                                                                       //using a do-while loop which will work until user guesses the correct number.
+    srand(time(0));                                                            //srand function will choose random number every time.
+    number=rand()%100;                                                         //to make the random number under 100,divided it by 100.
+
+    printf("\nGuess the number between 1 and 100\n");                          //asking user to guess the number.
+
+    do                                                                         //using a do-while loop which will work until user guesses the correct number.
     {
-        printf("\n\n\t\t\t\t\tGuess the number between 1 and 100\n\t\t\t\t\t\t\t");
+        scanf("%d",&guess);                                                    //input by user
 
-        scanf("%d",&guess);                                                  //input by user
+        if(guess>number)                                                       //when user's guess is lower than actual number.
+        {
+            printf("\nLower number please!\n");
+            numberofguess++;
+        }
 
-        if(guess>number)                                                     //when user guess is lower than actual number.
-            printf("\n\t\t\t\t\tLower number please!\n");
-
-        else if(number>guess)                                               //when user guess is higher than actual number.
-            printf("\n\t\t\t\t\tHigher number please!\n");
+        else if(number>guess)                                                   //when user's guess is higher than actual number.
+        {
+            printf("\nHigher number please!\n");
+            numberofguess++;
+        }
 
         else
-            printf("\n\t\t\t\t\tYou guessed in %d attempts!\n",nguess);     //No of times user has taken to guess the number.
-
-        nguess++;
+            printf("\nYou guessed the number in %d attempts!\n",numberofguess);
+                                                                                //Printing number of times user has taken to guess the number.
 
     }while(guess!=number);
 }
-
